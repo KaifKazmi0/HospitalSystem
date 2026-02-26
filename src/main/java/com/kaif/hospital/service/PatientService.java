@@ -39,4 +39,9 @@ public class PatientService {
         return patientRepository.getPatientByBirthDate(birthDate);
     }
 
+
+    public int updatePatientData(String name,Long id){
+        return patientRepository.updatePatientData(name,id);
+    }
+
 }

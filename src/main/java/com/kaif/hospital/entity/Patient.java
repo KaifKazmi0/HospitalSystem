@@ -1,10 +1,13 @@
 package com.kaif.hospital.entity;
 
+import com.kaif.hospital.entity.type.BloodGroup;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -37,4 +40,14 @@ public class Patient {
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDate createAt;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "insurance_id")
+    private Insurance insurance;
+
+
+    @OneToMany(mappedBy = "patient")
+    @ToString.Exclude
+    private List<Appointment> appointments = new ArrayList<>();
+
 }

@@ -1,4 +1,4 @@
-package com.kaif.hospital.entity;
+package com.kaif.hospital.entity.type;
 
 public enum BloodGroup {
     A_POSITIVE,

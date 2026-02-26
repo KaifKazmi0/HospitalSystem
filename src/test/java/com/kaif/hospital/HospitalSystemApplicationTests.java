@@ -7,6 +7,10 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -54,5 +58,23 @@ class HospitalSystemApplicationTests {
             System.out.println(p);
         }
     }
+
+    @Test
+    void updatePatientData(){
+        int rowAffected = service.updatePatientData("Aarav",1L);
+        System.out.println(rowAffected+" rows Affected");
+    }
+
+
+    @Test
+    void findAllPatient(){
+        Page<Patient> patient = patientRepository.findAllPatient(PageRequest.of(0,2, Sort.by("name").descending()));
+        for(Patient p: patient){
+            System.out.println(p);
+        }
+    }
+
+
+
 
 }
